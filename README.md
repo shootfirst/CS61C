@@ -159,13 +159,19 @@ sar dest
 shr dest
 
 数据传输：
-push
-pop
-mov
+push src
+pop  dest
+mov：以%开头的寄存器标识符，立即数是以$开头的数值，指令后带后缀b,w,l,q分别代表8位，16位，32位，64位。
 
+寄存器寻址	movl %:eax, %edx	edx = eax
 
+立即寻址	movl $0x123, %edx	edx = 0x123
 
+直接寻址	movl 0x123, %edx	edx = *(int32_t *)0x123
 
+间接寻址	movl (%ebx), %edx	edx = *(int32_t *)ebx
+
+变址寻址	movl 4(%ebx), %edx	edx = *(int32_t *)(ebx+4)
 
 
 
