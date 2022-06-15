@@ -63,47 +63,79 @@ satp：存储根页表的物理地址
 ### 指令
 
 加减乘除：
+
 add x1, x2, x3    x1 = x2 + x3
+
 add1 x1, x2, 20   x1 = x2 + 20
+
 sub x1, x2, x3    x1 = x2 - x3
+
 mul x1, x2, x3    x1 = x2 * x3
+
 div x1, x2, x3    x1 = x2 / x3
+
 rem x1, x2, x3    x1 = x2 % x3
 
 逻辑运算：
+
 and x1, x2, x3    x1 = x2 & x3
+
 or x1, x2, x3    x1 = x2 | x3
+
 xor x1, x2, x3    x1 = x2 ^ x3
+
 andi x1, x2, 20   x1 = x2 & 20
+
 ori x1, x2, 20   x1 = x2 | 20
+
 xor1 x1, x2, 20   x1 = x2 ^ 20
 
 移位运算：
+
 sll x1, x2, x3    x1 = x2 << x3
+
 srl x1, x2, x3    x1 = x2 >> x3
+
 sra x1, x2, x3    x1 = x2 >> x3
+
 slli x1, x2, 20    x1 = x2 << 20
+
 srli x1, x2, 20    x1 = x2 >> 20
+
 srai x1, x2, 20    x1 = x2 >> 20
 
 数据传输：
+
 lb x1, 40(x2)     x1 = x2[40]（把x2理解为字节数组）
+
 lh x1, 40(x2)     x1 = x2[40]
+
 lw x1, 40(x2)     x1 = x2[40]
+
 ld x1, 40(x2)     x1 = x2[40]
+
 sb x1, 40(x2)     x2[40] = x1
+
 sh x1, 40(x2)     x2[40] = x1
+
 sw x1, 40(x2)     x2[40] = x1
+
 sd x1, 40(x2)     x2[40] = x1
 
 条件分支：
+
 beq x1, x2, 100   if x1 == x2 goto pc+100
+
 bne x1, x2, 100   if x1 != x2 goto pc+100
+
 blt x1, x2, 100   if x1 < x2 goto pc+100
+
 bge x1, x2, 100   if x1 >= x2 goto pc+100
 
 无条件跳转：
+
 jal x1 100        x1 = pc + 4; goto pc+100
+
 jal x1 100(x2)    x1 = pc + 4; goto x2+100
 
 
@@ -133,34 +165,57 @@ r16d      | r16d        | temporary register
 ## 指令
 
 加减乘除：
+
 add src, dest      src可以是立即数值、内存地址、寄存器。dest可以是寄存器或内存中的值，不能同时使用内存地址作为源和目标。结果存放在dest中。需要在add结尾添加b、w、l来指定操作数长度。
+
 sub src, dest      
+
 inc dest          自增，dest可以是寄存器或内存中的值
+
 dec dest          自减
+
 mul src            eax = src * eax
+
 imul src           eax = src * eax           乘法操作使用另一个操作数必须放在al、ax、eax寄存器中
+
 imul src, dest     dest = src * dest
+
 imul 100, src, dest  
+
 div src,           
+
 idiv src           
 
 逻辑运算：
+
 and src, dest
+
 or src, dest
+
 xor src, dest
+
 nor dest
 
 移位运算：
+
 sal dest       
+
 sal %cl dest
+
 sal 100 dest
+
 shl dest
+
 sar dest
+
 shr dest
 
 数据传输：
+
 push src
+
 pop  dest
+
 mov：以%开头的寄存器标识符，立即数是以$开头的数值，指令后带后缀b,w,l,q分别代表8位，16位，32位，64位。
 
 寄存器寻址	movl %:eax, %edx	edx = eax
